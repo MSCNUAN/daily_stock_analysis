@@ -47,12 +47,13 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
       
-      - name: 安装依赖
-        run: |
-          pip install --upgrade pip
-          pip install -r requirements.txt
-      
-      - name: 创建必要目录
+     - name: 安装 wkhtmltopdf (用于 Markdown 转图片)
+      run: sudo apt-get update && sudo apt-get install -y wkhtmltopdf
+
+    - name: 安装依赖
+      run: |
+        pip install --upgrade pip
+        pip install -r requirements.txt
         run: |
           mkdir -p data logs reports
       
